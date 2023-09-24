@@ -57,4 +57,9 @@ export const style = StyleSheet.create({
 	lineText: {
 		fontSize: 16,
 	},
+	date: {
+		color: Colors.gray,
+		textAlign: "right",
+		paddingTop: 8,
+	}
 });
