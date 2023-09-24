@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 
 import symbolListReducer from "./slices/symbolListSlice";
+import exchangeRateReducer from "./slices/exchangeRateSlice";
 
 const store = configureStore({
   reducer: {
     symbolList: symbolListReducer,
+    exchangeRate: exchangeRateReducer,
   },
 });
 

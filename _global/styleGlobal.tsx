@@ -11,6 +11,12 @@ export const styleGlobal = StyleSheet.create({
 	field: {
 		marginBottom: 20,
 	},
+	center: {
+		flex: 1,
+		flexDirection: "column",
+		justifyContent: "center",
+		alignItems: "center",
+	},
 	// button
 	btnCnt: {
 		flexDirection: "column",
@@ -20,6 +26,7 @@ export const styleGlobal = StyleSheet.create({
 	},
 	btn: {
 		height: 44,
+		marginTop: 12,
 		borderRadius: 6,
 		borderWidth: 1,
 		borderColor: Colors.white,
@@ -43,8 +50,8 @@ export const styleGlobal = StyleSheet.create({
 	// END button
 
 	// textInput
-	textInputLabel: {color: Colors.gray, fontSize: 14, paddingBottom: 6, paddingLeft: 6},
-	textInputCntMain: {marginBottom: 24},
+	textInputLabel: {color: Colors.black, fontSize: 14, paddingBottom: 6, paddingLeft: 6},
+	textInputCntMain: {marginBottom: 10},
 	textInputCntMainError: {marginBottom: 6},
 	textInputCnt: {
 		alignSelf: "center",
