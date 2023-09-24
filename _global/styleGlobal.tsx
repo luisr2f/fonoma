@@ -1,4 +1,4 @@
-import {StyleSheet} from "react-native";
+import { StyleSheet } from "react-native";
 
 import Colors from "./colors";
 
@@ -46,13 +46,13 @@ export const styleGlobal = StyleSheet.create({
 		textTransform: "uppercase",
 		marginHorizontal: 12,
 	},
-	btnDisable: {backgroundColor: Colors.grayMin},
+	btnDisable: { backgroundColor: Colors.grayMin },
 	// END button
 
 	// textInput
-	textInputLabel: {color: Colors.black, fontSize: 14, paddingBottom: 6, paddingLeft: 6},
-	textInputCntMain: {marginBottom: 10},
-	textInputCntMainError: {marginBottom: 6},
+	textInputLabel: { color: Colors.black, fontSize: 14, paddingBottom: 6, paddingLeft: 6 },
+	textInputCntMain: { marginBottom: 10 },
+	textInputCntMainError: { marginBottom: 6 },
 	textInputCnt: {
 		alignSelf: "center",
 		flexDirection: "row",
@@ -63,16 +63,26 @@ export const styleGlobal = StyleSheet.create({
 		backgroundColor: Colors.white,
 		height: 40,
 	},
-	textInputError: {borderColor: Colors.red, borderWidth: 1.5},
-	textInputTextError: {color: Colors.red, fontSize: 14, paddingBottom: 6, paddingTop: 2, paddingLeft: 6},
+	textInputError: { borderColor: Colors.red, borderWidth: 1.5 },
+	textInputTextError: { color: Colors.red, fontSize: 14, paddingBottom: 6, paddingTop: 2, paddingLeft: 6 },
 	textInput: {
 		flex: 1,
 		paddingHorizontal: 8,
 		color: Colors.black,
-	},	
+	},
 	// END textInput
 
 	selectList: {
-		backgroundColor: Colors.white, borderRadius: 6, borderColor: Colors.gray
-	}
+		backgroundColor: Colors.white, borderRadius: 6, borderWidth:1, borderColor: Colors.gray
+	},
+	selectListError: {
+		borderColor: Colors.red,
+	},
+
+	message: {
+		paddingVertical: 12,
+	},
+	messageTextError: {
+		color: Colors.red,
+	},
 });

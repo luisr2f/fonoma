@@ -32,7 +32,7 @@ const exchangeRateSlice = createSlice({
 		builder.addCase(fetch.fulfilled, (state, action: PayloadAction<any>) => {
 			state.loading = false;
 			if ( action.payload.success) {
-				state.result ={time: Date.now(), rates: action.payload.rates};
+				state.result ={time: action.payload.timestamp, rates: action.payload.rates};
 				state.error = "";
 			} else {
 				state.result = initialState.result;
