@@ -75,8 +75,11 @@ export default function Exchange() {
   const validateForm = () => {
     let errorsForm: { [key: string]: string } = {};
 
-    if (!(Number(amount) > 0)) {
+    if (amount === "" ) {
       errorsForm.amount = "Amount is required.";
+    }
+    if (!(Number(amount) > 0)) {
+      errorsForm.amount = "Amount must be greater than zero.";
     }
     if (from === "") {
       errorsForm.from = "(Currency From) is required.";
