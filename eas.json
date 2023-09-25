@@ -1,0 +1,27 @@
+{
+  "cli": {
+    "version": ">= 5.2.0"
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal"
+    },
+    "preview": {
+      "ios": {
+        "simulator": true
+      },
+      "android": {
+        "buildType": "apk",
+        "env": {
+          "EXCHANGERATES_API": "http://api.exchangeratesapi.io/v1",
+          "EXCHANGERATES_ACCESS_KEY": "9723739fa2bef980ebe382cf3c2729b4"
+        }
+      }
+    },
+    "production": {}
+  },
+  "submit": {
+    "production": {}
+  }
+}
