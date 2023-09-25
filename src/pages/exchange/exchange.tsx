@@ -77,8 +77,7 @@ export default function Exchange() {
 
     if (amount === "" ) {
       errorsForm.amount = "Amount is required.";
-    }
-    if (!(Number(amount) > 0)) {
+    } else if (!(Number(amount) > 0)) {
       errorsForm.amount = "Amount must be greater than zero.";
     }
     if (from === "") {
@@ -129,6 +128,7 @@ export default function Exchange() {
             </Text>
             <View style={[styleGlobal.textInputCnt, error !== "" && styleGlobal.textInputError]}>
               <TextInput
+                testID="FormExchange.amountInput"
                 keyboardType={"numeric"}
                 style={[styleGlobal.textInput]}
                 placeholder={'Insert amount'}
@@ -228,6 +228,7 @@ export default function Exchange() {
           </View>
 
           <TouchableOpacity
+            testID="FormExchange.button"
             style={[styleGlobal.btn]}
             activeOpacity={0.8}
             disabled={exchangeRate.loading}
