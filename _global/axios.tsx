@@ -5,6 +5,8 @@ const axiosInstance = axios.create();
 
 axiosInstance.defaults.params = {};
 axiosInstance.interceptors.request.use(function (config) {
+	config.headers["Accept"] =  "application/json";
+	config.headers["Content-Type"] =  "application/json";
     config.params['access_key'] = EXCHANGERATES_ACCESS_KEY;
     return config;
 }, function (error) {

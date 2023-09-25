@@ -8,6 +8,9 @@ export const styleGlobal = StyleSheet.create({
 		paddingVertical: 20,
 		backgroundColor: Colors.white
 	},
+	scrollButton: {
+		height: 200,
+	},
 	field: {
 		marginBottom: 20,
 	},
@@ -28,13 +31,20 @@ export const styleGlobal = StyleSheet.create({
 		height: 44,
 		marginTop: 12,
 		borderRadius: 6,
-		borderWidth: 1,
-		borderColor: Colors.white,
 		backgroundColor: Colors.primary,
 		flexDirection: "row",
 		justifyContent: "center",
 		alignItems: "center",
 		paddingHorizontal: 20,
+	},
+	btnIcon: {
+		height: 44,
+		borderRadius: 6,
+		backgroundColor: Colors.gray,
+		flexDirection: "row",
+		justifyContent: "center",
+		alignItems: "center",
+		width: 50,
 	},
 	btnSubmit: {
 		minWidth: 220,
@@ -80,9 +90,22 @@ export const styleGlobal = StyleSheet.create({
 	},
 
 	message: {
-		paddingVertical: 12,
+		padding: 12,
+		borderRadius: 6,
+		marginBottom: 6,
+	
 	},
 	messageTextError: {
 		color: Colors.red,
+	},
+	messageError: {
+		borderColor: Colors.red,
+		backgroundColor: Colors.redMin,
+		color: Colors.black,
+	},
+	messageConfirm: {
+		borderColor: Colors.green,
+		backgroundColor: Colors.greenMin,
+		color: Colors.black,
 	},
 });

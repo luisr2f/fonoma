@@ -61,5 +61,25 @@ export const style = StyleSheet.create({
 		color: Colors.gray,
 		textAlign: "right",
 		paddingTop: 8,
-	}
+	},
+	selectCnt: {
+		flexDirection: "row",
+		justifyContent: "flex-start",
+		alignItems: "center",
+	},
+	selectCol: {
+		flex:1,
+	},
+	selectBtnCol: {
+		flex:1,
+		width: 60,
+		flexDirection: "column",
+		justifyContent: "center",
+		alignItems: "flex-end",
+		marginLeft: 12,
+		borderLeftWidth: 1,
+		borderColor: Colors.gray,
+		marginVertical: 18,
+
+	},
 });

@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { View, Text, TextInput, ScrollView, ActivityIndicator, TouchableOpacity, Keyboard, Dimensions } from "react-native";
 import { SelectList } from "react-native-dropdown-select-list";
 import moment from "moment";
+import { Entypo } from '@expo/vector-icons';
 
 import { styleGlobal } from "../../_global/styleGlobal";
 import { style } from "./exchangeStyle";
@@ -12,6 +13,8 @@ import { fetch as symbolListFetch } from "../../_redux/slices/symbolListSlice";
 import { fetch as exchangeRateFetch } from "../../_redux/slices/exchangeRateSlice";
 
 import { SelectData } from "../../types/SelectData";
+import { truncateDecimals } from "../../_global/helpers";
+import Message from "../../_components/message";
 
 export default function Exchange() {
 
@@ -76,10 +79,10 @@ export default function Exchange() {
       errorsForm.amount = "Amount is required.";
     }
     if (from === "") {
-      errorsForm.from = "(From) is required.";
+      errorsForm.from = "(Currency From) is required.";
     }
     if (to === "") {
-      errorsForm.to = "(To) is required.";
+      errorsForm.to = "(Currency To) is required.";
     }
 
     setErrors(errorsForm);
@@ -89,14 +92,17 @@ export default function Exchange() {
 
   const printSelect = (type: "from" | "to") => {
     const error = validFieldForm(type)
-
+    let styleSelect = styleGlobal.selectList;
+    if (error !== "") {
+      styleSelect = {...styleSelect, ...styleGlobal.selectListError}
+    }
     return (<>
       <View style={styleGlobal.field}>
         <Text style={styleGlobal.textInputLabel}>
           Currency {type === "from" ? "From" : "To"} *
         </Text>
         <SelectList
-          boxStyles={[styleGlobal.selectList, error !== "" && styleGlobal.selectListError]}
+          boxStyles={styleSelect}
           placeholder={"Select your currency (" + type + ")"}
           setSelected={(val) => type === "from" ? setFrom(val) : setTo(val)}
           data={selectData}
@@ -171,12 +177,24 @@ export default function Exchange() {
     }
   }
 
-  const truncateDecimals = (number: number, digits: number) => {
-    var multiplier = Math.pow(10, digits),
-      adjustedNum = number * multiplier,
-      truncatedNum = Math[adjustedNum < 0 ? 'ceil' : 'floor'](adjustedNum);
-    return truncatedNum / multiplier;
-  };
+  const btnChange = () => {
+    const valid = to!== "" && from !== "" 
+    return (
+      <>
+        <TouchableOpacity
+          style={[styleGlobal.btnIcon, !valid && styleGlobal.btnDisable]}
+          activeOpacity={0.8}
+          disabled={!valid}
+          onPress={() => {
+            setTo(from)
+            setFrom(to)
+          }}
+        >
+          <Entypo name="cycle" size={24} color={Colors.white} />
+        </TouchableOpacity>
+      </>
+    )
+  }
 
   return (
     <ScrollView ref={scrollRef} style={styleGlobal.scrollView} keyboardShouldPersistTaps="handled">
@@ -188,14 +206,23 @@ export default function Exchange() {
           </View>
         </> :
         <>
-          {submit && !isFormValid && <View style={styleGlobal.message}><Text style={styleGlobal.messageTextError}>Complete the form</Text></View>}
-          {submit && exchangeRate.error !== "" && <View style={styleGlobal.message}><Text style={styleGlobal.messageTextError}>{exchangeRate.error}</Text></View>}
+          {symbolList.error !== "" && <Message type="error" text={symbolList.error} />}
+          {submit && !isFormValid && <Message type="error" text={"Complete the form"} />}
+          {submit && exchangeRate.error !== "" && <Message type="error" text={exchangeRate.error} />}
 
           {printTextInputAmount()}
 
-          {printSelect("from")}
-
-          {printSelect("to")}
+          <View style={style.selectCnt}>
+            <View style={style.selectCol}>
+              {printSelect("from")}
+              {printSelect("to")}
+            </View>
+            <View >
+            <View style={style.selectBtnCol}>
+              {btnChange()}     
+              </View>         
+            </View>
+          </View>
 
           <TouchableOpacity
             style={[styleGlobal.btn]}
@@ -208,7 +235,10 @@ export default function Exchange() {
             {exchangeRate.loading ? (
               <ActivityIndicator color={Colors.white} size="small" />
             ) : (
+              <>
+              <Entypo name="calculator" size={24} color={Colors.white} />
               <Text style={[styleGlobal.btnTxt]}>Calculate</Text>
+              </>
             )}
           </TouchableOpacity>
 
@@ -233,6 +263,7 @@ export default function Exchange() {
             </>}
         </>
       }
+      <View style={styleGlobal.scrollButton}/>
     </ScrollView>
   );
 }
