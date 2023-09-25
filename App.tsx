@@ -4,9 +4,9 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import { Provider } from "react-redux";
-import store from "./_redux/store";
+import store from "./src/_redux/store";
 
-import Exchange from "./pages/exchange";
+import Exchange from "./src/pages/exchange";
 
 const Stack = createNativeStackNavigator();
 
